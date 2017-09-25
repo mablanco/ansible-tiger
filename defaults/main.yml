@@ -1,0 +1,4 @@
+---
+# defaults file for mablanco.tiger
+tiger_mail_from: ''
+tiger_mail_rcpt: ''
