@@ -2,7 +2,10 @@
 # tasks file for mablanco.tiger
 
 - name: install tiger
-  apt: name=tiger state=latest update_cache=yes
+  apt:
+    name: tiger
+    update_cache: yes
+    state: present
 
 - name: setup Tiger_Mail_FROM field
   lineinfile:
