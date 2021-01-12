@@ -1,32 +1,32 @@
 ---
 # tasks file for mablanco.tiger
 
-- name: tiger_mail_from should be defined
+- name: Tiger | tiger_mail_from should be defined
   assert:
     that:
     - tiger_mail_from is defined and tiger_mail_from | length > 0
     msg: "Set the value of 'tiger_mail_from' in either the inventory file or the playbook invoking this role."
 
-- name: tiger_mail_rcpt should be defined
+- name: Tiger | tiger_mail_rcpt should be defined
   assert:
     that:
     - tiger_mail_rcpt is defined and tiger_mail_rcpt | length > 0
     msg: "Set the value of 'tiger_mail_rcpt' in either the inventory file or the playbook invoking this role."
 
-- name: install tiger
+- name: Tiger | install tiger
   apt:
     name: tiger
     update_cache: yes
     state: present
 
-- name: setup Tiger_Mail_FROM field
+- name: Tiger | setup Tiger_Mail_FROM field
   lineinfile:
     dest: "/etc/tiger/tigerrc"
     insertafter: "^# Tiger_Mail_FROM="
     line: "Tiger_Mail_FROM=\"{{ tiger_mail_from }}\""
     state: present
 
-- name: setup Tiger_Mail_RCPT field
+- name: Tiger | setup Tiger_Mail_RCPT field
   lineinfile:
     dest: "/etc/tiger/tigerrc"
     regexp: "^Tiger_Mail_RCPT="
